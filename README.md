@@ -1,6 +1,6 @@
 # PackingGeneration
 
-Bash script for generation of random packing of spheres based on:
+Bash scripts for generation of random packing of spheres based on:
 
 OpenFOAM (http://www.openfoam.com)
 
