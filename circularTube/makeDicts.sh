@@ -315,3 +315,6 @@ echo "		set f0;" >> caseDicts/createPatchDict
 echo "	}" >> caseDicts/createPatchDict
 echo ");" >> caseDicts/createPatchDict
 echo "// ************************************************************************* //" >> caseDicts/createPatchDict
+
+rm -f *obj
+rm -f *vtk

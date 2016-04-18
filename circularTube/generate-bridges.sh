@@ -180,17 +180,17 @@ do
 		mv b2.stl b1.stl
 	fi
 
-	#rm -f run.scad	
-	#touch run.scad
-	#echo "union()" >> run.scad
-	#echo "{"  >> run.scad
-	#echo "	import(\"bridges_$i.stl\");" >> run.scad
-	#echo "	import(\"bed.stl\");"   >> run.scad
-	#echo "}"  >> run.scad
-	#echo "Adding bridges' block $i" 
-	#openscad -o sphere2.stl run.scad
-	#rm -r bed.stl
-	#mv sphere2.stl  bed.stl
+	rm -f run.scad	
+	touch run.scad
+	echo "union()" >> run.scad
+	echo "{"  >> run.scad
+	echo "	import(\"bridges_$i.stl\");" >> run.scad
+	echo "	import(\"bed.stl\");"   >> run.scad
+	echo "}"  >> run.scad
+	echo "Adding bridges' block $i" 
+	openscad -o sphere2.stl run.scad
+	rm -r bed.stl
+	mv sphere2.stl  bed.stl
 
 	rm -f run.scad
 	touch run.scad
@@ -212,10 +212,6 @@ mv binary.stl bed-cut.stl
 rm -f log run.scad
 admesh b1.stl -bbridges-all.stl > log 
 rm -f b1.stl
-
-surfaceAdd bed-cut.stl bridges-all.stl b1.stl > log
-admesh b1.stl -bbed.stl > log 
-rm b1.stl log *vtk
 
 echo " "
 echo "########################################"

@@ -132,43 +132,6 @@ rm -f sphere1.stl sphere2.stl
 cp spheres.stl bed.stl
 cp spheres.stl bed-cut.stl
 cp spheres.stl bed-backup.stl
-cp bridges_1.stl b1.stl
-echo " "
-for i in $(seq 1 $b)
-do
-	if [ $i != 1 ]
-	then
-		echo "Merging bridges' block $i"
-		surfaceAdd bridges_$i.stl b1.stl b2.stl -mergeRegions > log
-		rm -f b1.stl
-		mv b2.stl b1.stl
-	fi
-
-	rm -f run.scad
-	touch run.scad
-	echo "difference()" >> run.scad
-	echo "{"  >> run.scad
-	echo "	import(\"bed-cut.stl\");"   >> run.scad
-	echo "	import(\"bridges_$i.stl\");" >> run.scad
-	echo "}"  >> run.scad
-	echo "Removing bridges' block $i" 
-	openscad -o sphere2.stl run.scad
-	rm -r bed-cut.stl
-	mv sphere2.stl  bed-cut.stl
-
-done
-admesh bed.stl -bbinary.stl > log
-mv binary.stl bed.stl
-admesh bed-cut.stl -bbinary.stl > log
-mv binary.stl bed-cut.stl
-rm -f log run.scad
-admesh b1.stl -bbridges-all.stl > log 
-rm -f b1.stl
-
-surfaceAdd bed-cut.stl bridges-all.stl b1.stl > log
-admesh b1.stl -bbed.stl > log 
-rm b1.stl log *vtk
-
 echo " "
 echo "########################################"
 echo "#        Creating bed STL: done        #"
