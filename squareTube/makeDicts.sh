@@ -8,7 +8,7 @@ then
 fi
 
 name=$1
-Lbox=$2                                    #Second  input:  box side
+Lbox=$2
 halfLbox=$(echo "$Lbox*0.5" | bc -l)
 
 surfaceCheck -blockMesh STLfolder/$name.stl > log.surfaceCheck
