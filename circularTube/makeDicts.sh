@@ -1,14 +1,6 @@
 #Help
-if [ $# != 2 ]
-then
-	echo "Input order:"
-	echo "1:   .stl file name (without extection)"
-	echo "2:   Tube diameter [m]"
-	exit 1
-fi
-
-name=$1
-Dt=$2
+name=bed-merged
+Dt=$(cat STLfolder/DEM.info | grep 'Bo' | awk '{print$3}') 
 r=$(echo "$Dt*0.5" | bc -l)
 
 surfaceCheck -blockMesh STLfolder/$name.stl > log.surfaceCheck
@@ -26,7 +18,8 @@ zMinExtended=$(echo "$zMin-0.1*$zMax+0.1*$zMin" | bc -l)
 zMaxExtended=$(echo "$zMax+0.5*$zMax-0.5*$zMin" | bc -l)
 
 zLoc=$(echo "$zMinExtended+0.0001*$zMaxExtended-0.0001*$zMinExtended" | bc -l)
-rm -f log.surfaceCheck
+rm -f log.surfaceCheck *obj
+rm -f STLfolder/*vtk
 mkdir caseDicts
 rm -f caseDicts/snappyHexMeshDict
 touch caseDicts/snappyHexMeshDict
@@ -315,6 +308,3 @@ echo "		set f0;" >> caseDicts/createPatchDict
 echo "	}" >> caseDicts/createPatchDict
 echo ");" >> caseDicts/createPatchDict
 echo "// ************************************************************************* //" >> caseDicts/createPatchDict
-
-rm -f *obj
-rm -f *vtk

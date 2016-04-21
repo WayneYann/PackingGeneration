@@ -1,14 +1,6 @@
 #Help
-if [ $# != 2 ]
-then
-	echo "Input order:"
-	echo "1:   .stl file name (without extection)"
-	echo "2:   Box diameter"
-	exit 1
-fi
-
-name=$1
-Lbox=$2
+name=bed-merged
+Lbox=$(cat STLfolder/DEM.info | grep 'Bo' | awk '{print$3}') 
 halfLbox=$(echo "$Lbox*0.5" | bc -l)
 
 surfaceCheck -blockMesh STLfolder/$name.stl > log.surfaceCheck
@@ -30,16 +22,11 @@ zMaxExtended=$(echo "$zMax+1.0*$zMax-1.0*$zMin" | bc -l)
 xLoc=$(echo "$xMin+0.0001*$xMax-0.0001*$xMin" | bc -l)
 yLoc=$(echo "$yMin+0.0001*$yMax-0.0001*$yMin" | bc -l)
 zLoc=$(echo "$zMinExtended+0.0001*$zMaxExtended-0.0001*$zMinExtended" | bc -l)
-rm -f log.surfaceCheck 
+rm -f log.surfaceCheck *obj
+rm -f STLfolder/*vtk
 rm -rf run caseDicts
-mkdir run
-mkdir run/snappy
-mkdir run/snappy/system
-mkdir run/snappy/constant
-mkdir run/snappy/constant/polyMesh
-mkdir run/snappy/constant/triSurface
-mkdir run/regions
-cp createZones.sh run/regions/.
+
+
 mkdir caseDicts
 rm -f caseDicts/snappyHexMeshDict
 touch caseDicts/snappyHexMeshDict
