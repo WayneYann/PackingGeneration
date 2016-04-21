@@ -263,7 +263,7 @@ cat temp.scad >> run.scad
 rm -f temp.scad
 openscad -o bed-merged.stl run.scad
 admesh bed-merged.stl -bbinary.stl > log
-rm -f bed-merged.stl log
+rm -f bed-merged.stl log *.scad
 mv binary.stl bed-merged.stl
 echo "########################################"
 echo "#        Creating bed STL: done        #"

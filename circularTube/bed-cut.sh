@@ -181,7 +181,7 @@ echo "}"  >> run.scad
 rm -f b.scad a.scad
 openscad -o bed-cut.stl run.scad
 admesh bed-cut.stl -bbinary.stl > log
-rm -f bed-cut.stl log
+rm -f bed-cut.stl log *.scad
 mv binary.stl bed-cut.stl
 echo "########################################"
 echo "#        Creating bed STL: done        #"
