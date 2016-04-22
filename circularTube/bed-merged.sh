@@ -75,7 +75,7 @@ do
 	distanceCenter=$(echo "( $xi * $xi ) + ( $yi * $yi )" | bc -l)
 	DtDp=$(echo "$halfLbox*$halfLbox - 2*$halfLbox*$rp + $rp*$rp" | bc -l)
 	DpSquare=$(echo "$DtDp - 0.05*$DtDp" | bc -l)
-	hwb=$(echo "2*$hb" | bc -l)
+	hwb=$(echo "4*$hb" | bc -l)
 	distanceBridge=$(awk 'BEGIN{ print "'$DpSquare'"<"'$distanceCenter'" }')   
 	if [  "$distanceBridge" -eq 1 ]
 	then
