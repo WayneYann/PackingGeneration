@@ -55,7 +55,7 @@ do
 	zk=$zi
 	distanceCenter=$(echo "($xi*$xi+$xk*$xk-2*$xi*$xk)+($yi*$yi+$yk*$yk-2*$yi*$yk)+($zi*$zi+$zk*$zk-2*$zi*$zk)" | bc -l)
 	DpSquare=$(echo "$rp*$rp + 0.05*$rp" | bc -l)
-	hwb=$(echo "2*$hb" | bc -l)
+	hwb=$(echo "4*$hb" | bc -l)
 	distanceBridge=$(awk 'BEGIN{ print "'$distanceCenter'"<"'$DpSquare'" }')   
 	if [  "$distanceBridge" -eq 1 ]
 	then
@@ -90,7 +90,7 @@ do
 	zk=$zi
 	distanceCenter=$(echo "($xi*$xi+$xk*$xk-2*$xi*$xk)+($yi*$yi+$yk*$yk-2*$yi*$yk)+($zi*$zi+$zk*$zk-2*$zi*$zk)" | bc -l)
 	DpSquare=$(echo "$rp*$rp + 0.05*$rp" | bc -l)
-	hwb=$(echo "2*$hb" | bc -l)
+	hwb=$(echo "4*$hb" | bc -l)
 	distanceBridge=$(awk 'BEGIN{ print "'$distanceCenter'"<"'$DpSquare'" }')   
 	if [  "$distanceBridge" -eq 1 ]
 	then
@@ -125,7 +125,7 @@ do
 	zk=$zi
 	distanceCenter=$(echo "($xi*$xi+$xk*$xk-2*$xi*$xk)+($yi*$yi+$yk*$yk-2*$yi*$yk)+($zi*$zi+$zk*$zk-2*$zi*$zk)" | bc -l)
 	DpSquare=$(echo "$rp*$rp + 0.05*$rp" | bc -l)
-	hwb=$(echo "2*$hb" | bc -l)
+	hwb=$(echo "4*$hb" | bc -l)
 	distanceBridge=$(awk 'BEGIN{ print "'$distanceCenter'"<"'$DpSquare'" }')   
 	if [  "$distanceBridge" -eq 1 ]
 	then
@@ -160,7 +160,7 @@ do
 	zk=$zi
 	distanceCenter=$(echo "($xi*$xi+$xk*$xk-2*$xi*$xk)+($yi*$yi+$yk*$yk-2*$yi*$yk)+($zi*$zi+$zk*$zk-2*$zi*$zk)" | bc -l)
 	DpSquare=$(echo "$rp*$rp + 0.05*$rp" | bc -l)
-	hwb=$(echo "2*$hb" | bc -l)
+	hwb=$(echo "4*$hb" | bc -l)
 	distanceBridge=$(awk 'BEGIN{ print "'$distanceCenter'"<"'$DpSquare'" }')   
 	if [  "$distanceBridge" -eq 1 ]
 	then
